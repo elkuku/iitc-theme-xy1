@@ -8,6 +8,8 @@ This is a template for IITC themes
 
 ## GitHub Page 
 
+https://elkuku.github.io/iitc-theme-xy1/
+
 `https://<OWNER>.github.io/<REPO>/<PLUGIN_NAME>.user.js`
 
 ----
