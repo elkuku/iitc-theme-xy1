@@ -4,7 +4,7 @@ This is a template for IITC themes
 
 ## Usage
 
-....
+...
 
 ## GitHub Page 
 
