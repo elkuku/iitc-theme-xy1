@@ -61,12 +61,15 @@ let template = fs.readFileSync('gh_page/index.html', 'utf8')
 
 const projectName = pluginData.name.replace('IITC plugin: ', '')
 
+const changelog = fs.readFileSync('build/changelog.txt', 'utf8')
+
 template = template.replace('{{DEV_LINKS}}', devLinks)
     .replace('{{RELEASE_LINKS}}', releaseLinks)
     .replaceAll('{{PROJECT_NAME}}', projectName)
     .replaceAll('{{PROJECT_VERSION}}', version)
     .replaceAll('{{LAST_UPDATED}}', formattedDate)
     .replace('{{PROJECT_DESCRIPTION}}', pluginData.description)
+    .replace('{{CHANGELOG}}', changelog)
 
 fs.writeFileSync('gh_page/index.html', template, 'utf8')
 
