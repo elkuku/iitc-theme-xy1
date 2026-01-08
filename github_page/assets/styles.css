@@ -10,3 +10,7 @@ a {
 a:hover {
     color: #ffffff;
 }
+
+pre.changelog {
+    color: lime;
+}
