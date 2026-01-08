@@ -11,6 +11,10 @@ a:hover {
     color: #ffffff;
 }
 
+div.release-container {
+    border: 1px solid lightgray;
+}
+
 pre.changelog {
     color: lime;
 }
