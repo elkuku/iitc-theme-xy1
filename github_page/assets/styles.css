@@ -13,6 +13,12 @@ a:hover {
 
 div.release-container {
     border: 1px solid lightgray;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+table.changelog-table tr {
+    vertical-align: top;
 }
 
 pre.changelog {

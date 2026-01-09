@@ -1,3 +1,4 @@
+
 export interface Theme {
     name: string,
     css: string,
@@ -12,3 +13,14 @@ export interface Settings {
     options: string[]
 }
 
+// @ts-ignore
+declare module "*.txt" {
+    const content: string;
+    export default content;
+}
+
+// @ts-ignore
+declare module "*.json" {
+    const content: string;
+    export default content;
+}

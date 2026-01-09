@@ -1,5 +1,12 @@
 import fs from 'fs'
 
+function escapeHtml(value = '') {
+    return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
 console.log('Generating GitHub page...')
 
 const now = new Date()
@@ -15,7 +22,7 @@ fs.mkdirSync('gh_page', {recursive: true})
 fs.cpSync('github_page', 'gh_page', {recursive: true})
 fs.cpSync('build', 'gh_page/files', {recursive: true})
 
-let releaseFiles = []
+let releaseFiles = [], devFiles = []
 
 if (fs.existsSync('build/release')) {
     releaseFiles = fs
@@ -24,11 +31,12 @@ if (fs.existsSync('build/release')) {
         .map(entry => entry.name)
 }
 
-const devFiles = fs
-    .readdirSync('build/dev', {withFileTypes: true})
-    .filter(entry => entry.isFile())
-    .map(entry => entry.name)
-
+if (fs.existsSync('build/dev')) {
+    devFiles = fs
+        .readdirSync('build/dev', {withFileTypes: true})
+        .filter(entry => entry.isFile())
+        .map(entry => entry.name)
+}
 const metaFile = releaseFiles.filter(fileName => fileName.endsWith('.meta.js'))[0]
 let version = 'n/a'
 if (metaFile) {
@@ -61,7 +69,14 @@ let template = fs.readFileSync('gh_page/index.html', 'utf8')
 
 const projectName = pluginData.name.replace('IITC plugin: ', '')
 
-const changelog = fs.readFileSync('build/changelog.txt', 'utf8')
+const raw = fs.readFileSync('build/changelog.json', 'utf8')
+const tags = JSON.parse(raw);
+const changelog = tags.map(tag => `
+      <tr>
+        <td>${escapeHtml(tag.name)}</td>
+        <td><pre class="changelog">${escapeHtml(tag.message)}</pre></td>
+      </tr>
+  `).join('');
 
 template = template.replace('{{DEV_LINKS}}', devLinks)
     .replace('{{RELEASE_LINKS}}', releaseLinks)

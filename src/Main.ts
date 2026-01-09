@@ -6,7 +6,7 @@ import * as Plugin from 'iitcpluginkit'
 import theme from '../build/theme.json'
 
 // @ts-expect-error we don't want to import any files :(
-import changelog from '../build/changelog.txt'
+import changelog from '../build/changelog.json'
 
 // @ts-expect-error we don't want to import JSON files :(
 import config from '../plugin.json'

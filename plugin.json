@@ -5,6 +5,5 @@
   "description": "The XY1 theme for IITC",
   "author": "elkuku",
   "entry": "src/Main.ts",
-  "changelog": "build/changelog.txt",
   "downloadURL": "https://elkuku.github.io/iitc-theme-xy1/files/release/iitc_plugin_TcTheme_XY1.user.js"
 }
